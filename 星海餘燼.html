@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>星海餘燼 - 專題介紹</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-size: 16px;
+      line-height: 1.65;
+      color: #ffffff;
+      background: #1a1a2e;
+    }
+
+    body {
+      font-family: "Microsoft JhengHei", sans-serif;
+      background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url("流星.jpg") fixed center/cover;
+      background-attachment: fixed;
+    }
+
+    #hero {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      height: 100vh;
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
+        url("流星.jpg");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      transition: all 0.6s ease;
+      padding: 0 20px;
+    }
+
+    .hero-inner {
+      max-width: 800px;
+      padding: 0;
+    }
+
+    .hero-inner h1 {
+      font-size: 4rem;
+      margin-bottom: 20px;
+    }
+
+    .hero-inner p {
+      font-size: 1.3rem;
+      margin-bottom: 30px;
+    }
+
+    .enter-btn {
+      display: inline-block;
+      padding: 14px 35px;
+      background: linear-gradient(rgba(45, 108, 223, 0.35), rgba(45, 108, 223, 0.35)), url("流星.jpg") center/cover;
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      transition: 0.3s;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(4px);
+    }
+
+    .enter-btn:hover {
+      background: linear-gradient(rgba(79, 133, 232, 0.5), rgba(79, 133, 232, 0.5)), url("流星.jpg") center/cover;
+      transform: translateY(-2px);
+    }
+
+    #hero.shrink {
+      height: 90px;
+      background: linear-gradient(rgba(0, 0, 0, 0.92), rgba(0, 0, 0, 0.92)), url("流星.jpg");
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+      padding: 0 20px;
+    }
+
+    #hero.shrink .hero-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    #hero.shrink h1 {
+      font-size: 1.8rem;
+      margin: 0;
+    }
+
+    #hero.shrink p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    #hero.shrink .enter-btn {
+      display: none;
+    }
+
+    main {
+      width: min(1100px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 28px 0 48px;
+      transition: padding-top 0.3s ease;
+    }
+
+    body.hero-small main {
+      padding-top: 120px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 40px;
+      background: linear-gradient(rgba(45, 108, 223, 0.35), rgba(45, 108, 223, 0.35)), url("流星.jpg") center/cover;
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      transition: 0.3s;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .btn:hover {
+      background: linear-gradient(rgba(79, 133, 232, 0.8), rgba(79, 133, 232, 0.8)), url("流星.jpg") center/cover;
+      transform: translateY(-3px);
+    }
+
+    .content {
+      max-width: 1000px;
+      margin: auto;
+      padding: 80px 20px;
+    }
+
+    .content h2 {
+      margin-bottom: 20px;
+      color: #ffffff;
+    }
+
+    .content p {
+      line-height: 1.8;
+    }
+
+    main {
+      width: min(1100px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 28px 0 48px;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      background: #3a3a3a;
+      border: 1px solid #555555;
+      border-radius: 999px;
+      padding: 8px 14px;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    nav a:hover {
+      background: #4a4a4a;
+      transform: translateY(-1px);
+    }
+
+    section {
+      background: rgba(58, 58, 58, 0.65);
+      border: 1px solid rgba(85, 85, 85, 0.5);
+      border-radius: 18px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.6);
+      margin-bottom: 24px;
+      padding: 28px;
+      backdrop-filter: blur(8px);
+    }
+
+    section#gantt {
+      background: linear-gradient(rgba(10, 10, 10, 0.55), rgba(10, 10, 10, 0.55)), url("太空.JPG") center/cover no-repeat;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: none;
+    }
+
+    /* SWOT grid styles */
+    .swot-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .swot-card {
+      background: rgba(20,20,20,0.45);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 22px;
+      border-radius: 12px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+      backdrop-filter: blur(6px);
+      min-height: 220px;
+    }
+
+    .swot-card h3 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-size: 1.15rem;
+      color: #ffffff;
+    }
+
+    .swot-card ul { padding-left: 1.1rem; margin: 0; }
+    .swot-card li { margin: 0.6rem 0; color: #e6e6e6; }
+
+    .swot-card.strength { border-left: 6px solid #4771ff; }
+    .swot-card.weakness { border-left: 6px solid #ff9f43; }
+    .swot-card.opportunity { border-left: 6px solid #2ecc71; }
+    .swot-card.threat { border-left: 6px solid #ff6b6b; }
+
+    @media (max-width: 1000px) {
+      .swot-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 620px) {
+      .swot-grid { grid-template-columns: 1fr; }
+    }
+
+    section#gantt table {
+      width: 100%;
+      border-collapse: collapse;
+      background: rgba(0, 0, 0, 0.45);
+      color: #ffffff;
+      position: relative;
+      z-index: 1;
+    }
+
+    section#gantt th,
+    section#gantt td {
+      padding: 10px 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+    }
+
+    section#gantt th {
+      border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    section#gantt tbody tr:hover td {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    section h2 {
+      margin-top: 0;
+      font-size: 1.6rem;
+      color: #ffffff;
+      border-left: 6px solid #4771ff;
+      padding-left: 14px;
+    }
+
+    section p,
+    section li,
+    section dd {
+      font-size: 1rem;
+      color: #e0e0e0;
+      margin: 0.9em 0;
+    }
+
+    ul,
+    ol {
+      padding-left: 1.3rem;
+      margin: 0.75em 0;
+    }
+
+    li {
+      margin: 0.45em 0;
+    }
+
+    dl {
+      margin: 0.75em 0;
+    }
+
+    dt {
+      font-weight: 700;
+      margin-top: 1rem;
+    }
+
+    dd {
+      margin-left: 1.2rem;
+    }
+
+    .note {
+      display: block;
+      margin-top: 16px;
+      font-size: 0.95rem;
+      color: #b0b0b0;
+    }
+
+    @media (max-width: 720px) {
+      header {
+        padding: 32px 16px 24px;
+      }
+
+      section {
+        padding: 22px;
+      }
+
+      nav {
+        gap: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header id="hero">
+    <div class="hero-inner">
+      <h1>星海餘燼</h1>
+      <p>人類從未停止戰爭，差別只是有沒有死人。</p>
+      <a href="#story" class="enter-btn">進入故事</a>
+    </div>
+  </header>
+
+
+  <main class="content">
+    <nav aria-label="頁面導覽">
+      <a href="#story">故事介紹</a>
+      <a href="#motivation">研究動機</a>
+      <a href="#research-questions">研究問題</a>
+      <a href="#theory">理論基礎</a>
+      <a href="#conclusion">結論</a>
+      <a href="#swot">SWOT分析</a>
+    </nav>
+
+    <section id="story">
+      <h2>故事介紹</h2>
+      <p>四名懷抱明星夢的學生，在流星下約定未來再次相見。然而戰爭突然爆發，夢想、校園與友情在炮火中接連消失。當一切失去後，唯一再次出現的，只剩那顆曾經見過的流星。</p>
+      <p>透過「流星」象徵失去、創傷與無法挽回的遺憾，將抽象戰爭經驗轉化為情感敘事。</p>
+    </section>
+
+    <section id="motivation">
+      <h2>研究動機</h2>
+      <p>本研究起源於觀看《螢火蟲之墓》後的戰爭印象，以及對軍事技術與其矛盾情感的思考。</p>
+      <ul>
+        <li>對武器與戰爭敘事的興趣，並不等同於對戰爭本身的認同。</li>
+        <li>以平民視角呈現戰爭，檢視資訊充足時仍可能忽視警訊的現象。</li>
+        <li>透過創作《星海餘燼》，思考戰爭如何在日常中逐步侵蝕人們的心理與生活。</li>
+      </ul>
+    </section>
+
+    <section id="research-questions">
+      <h2>研究問題</h2>
+      <ol>
+        <li>戰爭如何透過平民視角呈現？<br><span class="note">關鍵概念：microhistory、日常崩壞</span></li>
+        <li>為什麼人們會忽視戰爭警告？<br><span class="note">參考：Kahneman、Slovic、Fischhoff</span></li>
+        <li>如何透過「流星」象徵失去？<br><span class="note">參考：Barthes、Bachelard、Frye</span></li>
+      </ol>
+    </section>
+
+    <section id="theory">
+      <h2>理論基礎</h2>
+      <dl>
+        <dt>戰爭與創傷敘事</dt>
+        <dd>Cathy Caruth：創傷是「無法完整被經驗的經驗」。</dd>
+        <dd>《西線無戰事》：戰爭日常化與去英雄化。</dd>
+        <dd>《活著》：歷史持續性對個體的消耗。</dd>
+
+        <dt>認知與風險心理學</dt>
+        <dd>Kahneman &amp; Tversky：系統1/2與前景理論。</dd>
+        <dd>Slovic：風險是「情緒感知」，而非純數據。</dd>
+        <dd>Fischhoff：風險資訊容易因抽象而失效。</dd>
+        <dd>Gigerenzer：人類依賴簡化直覺決策。</dd>
+
+        <dt>象徵與文學理論</dt>
+        <dd>Barthes：符號是文化神話的建構。</dd>
+        <dd>Bachelard：意象是心理空間的映射。</dd>
+        <dd>Frye：流星象徵「墜落＝秩序崩解」原型。</dd>
+        <dd>新海誠作品的流星／彗星意象（如《你的名字》）。</dd>
+      </dl>
+    </section>
+
+    <section id="conclusion">
+      <h2>核心研究結論</h2>
+      <p>本研究認為，戰爭不是單一事件，而是透過「心理忽視」與「資訊距離」逐步累積的過程。</p>
+      <ul>
+        <li>即使理解戰爭存在，人們仍可能因認知偏誤低估其發生機率。</li>
+        <li>「流星」象徵將不可逆的失去轉化為可感知的情感經驗，讓戰爭創傷在敘事中呈現。</li>
+      </ul>
+    </section>
+
+    <section id="positioning">
+      <h2>作品定位</h2>
+      <ol>
+        <li>類型：反戰敘事 × 心理創傷 × 象徵文學</li>
+        <li>目標受眾：高中生、大學生與對社會議題有興趣的讀者</li>
+        <li>核心特色：以平民視角呈現戰爭，而非英雄史觀</li>
+    </section>
+
+    <section id="survey">
+      <h2>問卷結果</h2>
+      <ol>
+        <li>78%受訪者認為戰爭無法有效解決問題</li>
+        <li>情緒反應：受訪者普遍對戰爭持強烈負面情緒，並出現語氣變化、停頓與情緒強化。</li>
+        <li>戰爭合理性：多數受訪者認為戰爭無法有效達成目的，代價過高。</li>
+        <li>戰爭成因：主要來源為資源、土地與政治衝突，其次為經濟與文化因素。</li>
+        <li>重要觀察：受訪者雖然反對戰爭，但仍以情緒性反應為主，顯示議題同時涉及情緒與理性。</li>
+      </ol>
+    </section>
+
+    <section id="presentation">
+
+      <h2>議題呈現方式</h2>
+      <ul>
+        <li>
+          <strong>平民視角與日常崩壞</strong><br>
+          以學生日常生活為起點，呈現戰爭前後的巨大落差與生活破裂。<br>
+          對應理論：microhistory / Remarque
+        </li>
+        <li>
+          <strong>資訊忽視與延遲感知</strong><br>
+          設定AI預警未受重視的情節，象徵即使有警告也仍被視為遙遠事件。<br>
+          對應理論：Kahneman、Slovic、Fischhoff
+        </li>
+        <li>
+          <strong>流星象徵創傷與記憶</strong><br>
+          流星承載記憶與失去，象徵短暫消逝、無法實現的未來與世界秩序崩壞。<br>
+          對應理論：Barthes、Bachelard、Frye
+        </li>
+      </ul>
+    </section>
+
+    <section id="keynotes">
+      <h2>重點整理</h2>
+      <p>作品透過平民敘事、資訊忽視機制與象徵意象三種手法，將戰爭議題轉化為可被情感理解的敘事經驗。</p>
+    </section>
+
+    <section id="swot">
+      <h2>SWOT分析</h2>
+      <div class="swot-grid">
+        <div class="swot-card strength">
+          <h3>Strength（優勢）</h3>
+          <ul>
+            <li>結合創作與研究（故事＋理論）。</li>
+            <li>有明確社會議題（戰爭／心理／資訊忽視）。</li>
+            <li>使用象徵系統（流星）提升敘事深度。</li>
+          </ul>
+        </div>
+
+        <div class="swot-card weakness">
+          <h3>Weakness（劣勢）</h3>
+          <ul>
+            <li>創作內容偏抽象，理解門檻較高。</li>
+            <li>理論跨領域需良好整合。</li>
+            <li>實證樣本數有限。</li>
+          </ul>
+        </div>
+
+        <div class="swot-card opportunity">
+          <h3>Opportunity（機會）</h3>
+          <ul>
+            <li>可延伸為互動網頁作品。</li>
+            <li>可應用於教育或反戰議題推廣。</li>
+            <li>可發展成完整視覺小說／動畫企劃。</li>
+          </ul>
+        </div>
+
+        <div class="swot-card threat">
+          <h3>Threat（威脅）</h3>
+          <ul>
+            <li>戰爭題材敏感，需避免政治偏向。</li>
+            <li>受眾對抽象敘事接受度不一。</li>
+            <li>理論引用過多可能影響閱讀流暢性。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="gantt">
+      <h2>甘特圖</h2>
+      <table>
+        <thead>
+          <tr>
+            <th style="text-align:left; padding: 10px 8px; border-bottom: 2px solid #c7d0ea;">工作項目</th>
+            <th style="padding: 10px 8px; border-bottom: 2px solid #c7d0ea;">1月</th>
+            <th style="padding: 10px 8px; border-bottom: 2px solid #c7d0ea;">2月</th>
+            <th style="padding: 10px 8px; border-bottom: 2px solid #c7d0ea;">3月</th>
+            <th style="padding: 10px 8px; border-bottom: 2px solid #c7d0ea;">4月</th>
+            <th style="padding: 10px 8px; border-bottom: 2px solid #c7d0ea;">5月</th>
+            <th style="padding: 10px 8px; border-bottom: 2px solid #c7d0ea;">6月</th>
+            <th style="padding: 10px 8px; border-bottom: 2px solid #c7d0ea;">7月</th>
+            <th style="padding: 10px 8px; border-bottom: 2px solid #c7d0ea;">8月</th>
+            <th style="padding: 10px 8px; border-bottom: 2px solid #c7d0ea;">9月</th>
+            <th style="padding: 10px 8px; border-bottom: 2px solid #c7d0ea;">10月</th>
+            <th style="padding: 10px 8px; border-bottom: 2px solid #c7d0ea;">11月</th>
+            <th style="padding: 10px 8px; border-bottom: 2px solid #c7d0ea;">12月</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 10px 8px; border-bottom: 1px solid #e3e8f4;">主題確立</td>
+            <td colspan="2" style="background:#b6d4f6; border-bottom: 1px solid #e3e8f4;">■</td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+          </tr>
+          <tr style="display:none;">
+            <td style="padding: 10px 8px; border-bottom: 1px solid #e3e8f4;">資料蒐集</td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td colspan="3" style="background:#c8e5bc; border-bottom: 1px solid #e3e8f4;">■</td>
+            <td colspan="2" style="background:#c8e5bc; border-bottom: 1px solid #e3e8f4;">■</td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+          </tr>
+          <tr>
+            <td style="padding: 10px 8px; border-bottom: 1px solid #e3e8f4;">問卷訪談</td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td colspan="3" style="background:#f8d4a6; border-bottom: 1px solid #e3e8f4;">■</td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+          </tr>
+          <tr>
+            <td style="padding: 10px 8px; border-bottom: 1px solid #e3e8f4;">創作撰寫</td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td colspan="2" style="background:#f6c1d9; border-bottom: 1px solid #e3e8f4;">■</td>
+            <td colspan="2" style="background:#f6c1d9; border-bottom: 1px solid #e3e8f4;">■</td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+          </tr>
+          <tr>
+            <td style="padding: 10px 8px; border-bottom: 1px solid #e3e8f4;">網頁製作</td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td colspan="3" style="background:#d0c4f8; border-bottom: 1px solid #e3e8f4;">■</td>
+            <td colspan="2" style="background:#d0c4f8; border-bottom: 1px solid #e3e8f4;">■</td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+          </tr>
+          <tr>
+            <td style="padding: 10px 8px; border-bottom: 1px solid #e3e8f4;">整理完成</td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td colspan="2" style="background:#c4f1da; border-bottom: 1px solid #e3e8f4;">■</td>
+            <td colspan="2" style="background:#c4f1da; border-bottom: 1px solid #e3e8f4;">■</td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+          </tr>
+          <tr>
+            <td style="padding: 10px 8px; border-bottom: 1px solid #e3e8f4;">視覺設計</td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td colspan="3" style="background:#f4e1a9; border-bottom: 1px solid #e3e8f4;">■</td>
+            <td colspan="3" style="background:#f4e1a9; border-bottom: 1px solid #e3e8f4;">■</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px 8px;">分鏡</td>
+            <td colspan="3" style="background:#f0b0b0;">■</td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+            <td style="border-bottom: 1px solid #e3e8f4;"></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <script>
+    const hero = document.getElementById('hero');
+    const enterBtn = document.querySelector('.enter-btn');
+
+    let initialScrollY = 0;
+    let didShrink = false;
+    const SCROLL_THRESHOLD = 80; // pixels user must scroll down to trigger shrink
+
+    function shrinkHero() {
+      if (!didShrink) {
+        hero.classList.add('shrink');
+        didShrink = true;
+      }
+    }
+
+    function onScroll() {
+      // Only consider user-initiated scrolling relative to initial page position
+      if (window.scrollY - initialScrollY > SCROLL_THRESHOLD) {
+        shrinkHero();
+      }
+    }
+
+    // Record initial scroll position after load to avoid restoring/anchor scroll triggering shrink
+    window.addEventListener('load', () => {
+      initialScrollY = window.scrollY || 0;
+      // If the page is already scrolled far (e.g. opened with a hash), don't auto-shrink immediately
+      // but still listen for further downward scrolling.
+    });
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    if (enterBtn) {
+      enterBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        shrinkHero();
+        document.querySelector('#story').scrollIntoView({ behavior: 'smooth' });
+      });
+    }
+  </script>
+</body></html>
